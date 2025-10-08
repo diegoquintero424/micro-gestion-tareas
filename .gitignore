@@ -1,0 +1,23 @@
+# Archivos de estado de Terraform
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Archivos de respaldo
+*.backup
+*.bak
+
+# Archivos de configuración local
+.terraform/
+.terraform.lock.hcl
+#terraform.tfvars
+*.auto.tfvars
+
+# Archivos sensibles
+*.pem
+*.key
+*.crt
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
