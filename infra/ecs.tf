@@ -36,7 +36,6 @@ resource "aws_ecs_task_definition" "task_api" {
       portMappings = [
         {
           containerPort = 8000
-          hostPort      = 8000
         }
       ]
       environment = [

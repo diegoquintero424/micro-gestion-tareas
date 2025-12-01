@@ -98,7 +98,7 @@ resource "aws_lb_target_group" "api_tg" {
   target_type = "ip" # Necesario para Fargate
 
   health_check {
-    path                = "/"
+    path                = "/tasks"
     protocol            = "HTTP"
     matcher             = "200"
     interval            = 30

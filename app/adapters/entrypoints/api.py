@@ -60,6 +60,12 @@ def list_tasks_endpoint(service: TaskService = Depends(get_task_service)):
     """
     return service.get_all_tasks()
 
+
+@app.get("/")
+def root_health():
+    """Health check simple para ALB / monitorización."""
+    return {"status": "ok"}
+
 # Nota: El GET por ID debe implementarse también delegando a service.get_task_by_id
 # @app.get("/tasks/{task_id}", response_model=Task)
 # def get_task_endpoint(task_id: str, service: TaskService = Depends(get_task_service)):
