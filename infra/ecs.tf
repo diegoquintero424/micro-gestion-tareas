@@ -44,6 +44,26 @@ resource "aws_ecs_task_definition" "task_api" {
           value = aws_dynamodb_table.tasks_table.name # Inyecta el nombre de la tabla
         }
       ]
+
+      # Añadimos la región para que boto3 pueda inferirla dentro del contenedor
+      environment = concat(
+        [
+          {
+            name  = "DYNAMODB_TABLE_NAME"
+            value = aws_dynamodb_table.tasks_table.name
+          }
+        ],
+        [
+          {
+            name  = "AWS_REGION"
+            value = var.aws_region
+          },
+          {
+            name  = "AWS_DEFAULT_REGION"
+            value = var.aws_region
+          }
+        ]
+      )
       logConfiguration = {
         logDriver = "awslogs"
         options = {
